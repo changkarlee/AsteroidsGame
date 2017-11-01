@@ -1,13 +1,13 @@
 class Spaceship extends Floater  
 {   
   public void setX(int x){myCenterX = x;}  
-  public int getX();   
+  public int getX()  {return myCenterX;}
   public void setY(int y){myCenterY = y;}   
-  public int getY();   
+  public int getY()   {return myCenterY;}
   public void setDirectionX(double x){myDirectionX = x;}   
-  public double getDirectionX();   
+  public double getDirectionX()   {
   public void setDirectionY(double y){myDirectionY = y;}   
-  public double getDirectionY();   
+  public double getDirectionY()   
   public void setPointDirection(int degrees) {myPointDirection = degrees;}  
-  public double getPointDirection(); 
+  public double getPointDirection() 
 }
