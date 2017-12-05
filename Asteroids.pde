@@ -4,8 +4,10 @@ class Asteroids extends Floater
  private int speed;
  public Asteroids()
  {
-   x = (float)Math.random()*500;
-   y = (float)Math.random()*500;
+   x = 10;
+   y = 10;
+   myCenterX = 10;
+   myCenterY = 10;
    speed = (int)(Math.random()*10)-10;
  }
  public void move()
@@ -16,7 +18,7 @@ class Asteroids extends Floater
   public void show() 
   {
    fill(255);
-   ellipse(x, y, 30, 30);
+   ellipse((float)myCenterX, (float)myCenterY, 30, 30);
   }
   public void setX(int x) {
     myCenterX = x;

@@ -1,6 +1,7 @@
 Spaceship commanderK = new Spaceship();
 Stars [] bright;
-Asteroids [] rock;
+ArrayList <Asteroids> rock = new ArrayList <Asteroids>();
+
 public void setup() 
 {
   size(500, 500);
@@ -9,27 +10,35 @@ public void setup()
   {
    bright[i] = new Stars(); 
   }
-  rock = new Asteroids[10];
-  for(int i = 0; i < rock.length; i++)
-  {
-   rock[i] = new Asteroids(); 
-  }
+ // rock = new Asteroids[10];
+ // for(int i = 0; i < rock.length; i++)
+  //{
+   //rock[i] = new Asteroids(); 
+  //}
+  rock.add(new Asteroids());
 }
+
 public void draw() 
 {
   background(0);
+  
   commanderK.show();
   commanderK.move();
-  for(int i = 0; i< rock.length; i++)
+  float meter = dist(commanderK.getX(), commanderK.getY(), rock.get(0).getX(), rock.get(0).getY());
+  for(int i = 0; i< rock.size(); i++)
    {
-     rock[i].show();
-     rock[i].move();
+     rock.get(0).show();
+     rock.get(0).move();
    }
   for(int i = 0; i < bright.length; i++)
   {
    bright[i].show(); 
   }
-  
+  if(meter <= 30)
+  {
+   rock.remove(0); 
+   //rock.add(new Asteroids());
+  }
 }
 public void keyPressed()
 {
