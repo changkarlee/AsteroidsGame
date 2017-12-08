@@ -6,60 +6,66 @@ public void setup()
 {
   size(500, 500);
   bright = new Stars[10];
-  for(int i = 0; i < bright.length; ++i)
+  for (int i = 0; i < bright.length; ++i)
   {
-   bright[i] = new Stars(); 
+    bright[i] = new Stars();
   }
- // rock = new Asteroids[10];
- // for(int i = 0; i < rock.length; i++)
+  // rock = new Asteroids[10];
+  // for(int i = 0; i < rock.length; i++)
   //{
-   //rock[i] = new Asteroids(); 
+  //rock[i] = new Asteroids(); 
   //}
-  rock.add(new Asteroids());
+  for (int i = 0; i < rock.size(); i++)
+  {
+    rock.add(new Asteroids());
+  }
 }
 
 public void draw() 
 {
   background(0);
-  
+  float meter = 0;
   commanderK.show();
   commanderK.move();
-  float meter = dist(commanderK.getX(), commanderK.getY(), rock.get(0).getX(), rock.get(0).getY());
-  for(int i = 0; i< rock.size(); i++)
-   {
-     rock.get(0).show();
-     rock.get(0).move();
-   }
-  for(int i = 0; i < bright.length; i++)
+  for (int i = 0; i < rock.size(); i++)
   {
-   bright[i].show(); 
+    meter = dist(commanderK.getX(), commanderK.getY(), rock.get(i).getX(), rock.get(i).getY());
+    if (meter <= 30) //make a loop for drawing the different asteroids
+    {
+      rock.remove(i); 
+      //rock.add(new Asteroids());
+    }
   }
-  if(meter <= 30)
+  for (int i = 0; i< rock.size(); i++)
   {
-   rock.remove(0); 
-   //rock.add(new Asteroids());
+    rock.get(i).show();
+    rock.get(i).move();
+  }
+  for (int i = 0; i < bright.length; i++)
+  {
+    bright[i].show();
   }
 }
 public void keyPressed()
 {
-  if(key == 'w')
+  if (key == 'w')
   {
-   commanderK.accelerate(1); 
+    commanderK.accelerate(1);
   }
-  if(key== 'a')
+  if (key== 'a')
   {
-   commanderK.turn(10); 
+    commanderK.turn(10);
   }
-  if(key == 'd')
+  if (key == 'd')
   {
     commanderK.turn(-10);
   }
-  if(key == 's') //hyperspace
+  if (key == 's') //hyperspace
   {
-   commanderK.setX((int)(Math.random()*500));
-   commanderK.setY((int)(Math.random()*500));
-   commanderK.setDirectionX(0);
-   commanderK.setDirectionY(0);
-   commanderK.setPointDirection((int)(Math.random()*360));
+    commanderK.setX((int)(Math.random()*500));
+    commanderK.setY((int)(Math.random()*500));
+    commanderK.setDirectionX(0);
+    commanderK.setDirectionY(0);
+    commanderK.setPointDirection((int)(Math.random()*360));
   }
 }
