@@ -15,7 +15,7 @@ public void setup()
   //{
   //rock[i] = new Asteroids(); 
   //}
-  for (int i = 0; i < rock.size(); i++)
+  for (int i = 0; i < 10; i++)
   {
     rock.add(new Asteroids());
   }
@@ -29,17 +29,14 @@ public void draw()
   commanderK.move();
   for (int i = 0; i < rock.size(); i++)
   {
+    rock.get(i).show();
+    rock.get(i).move();  
     meter = dist(commanderK.getX(), commanderK.getY(), rock.get(i).getX(), rock.get(i).getY());
-    if (meter <= 30) //make a loop for drawing the different asteroids
+    if (meter <= 5) //make a loop for drawing the different asteroids
     {
-      rock.remove(i); 
+      rock.remove(0); 
       //rock.add(new Asteroids());
     }
-  }
-  for (int i = 0; i< rock.size(); i++)
-  {
-    rock.get(i).show();
-    rock.get(i).move();
   }
   for (int i = 0; i < bright.length; i++)
   {
