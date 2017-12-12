@@ -32,7 +32,7 @@ public void draw()
     rock.get(i).show();
     rock.get(i).move();  
     meter = dist(commanderK.getX(), commanderK.getY(), rock.get(i).getX(), rock.get(i).getY());
-    if (meter <= 5) //make a loop for drawing the different asteroids
+    if (meter <= 20) //make a loop for drawing the different asteroids
     {
       rock.remove(i); 
       //rock.add(new Asteroids());
